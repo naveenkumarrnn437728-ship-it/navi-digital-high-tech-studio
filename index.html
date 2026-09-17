@@ -2,316 +2,3087 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050505">
+
 <title>NAVI DIGITAL HIGH TECH STUDIO & VIDEOS</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<meta name="description" content="NAVI DIGITAL HIGH TECH STUDIO & VIDEOS – Wedding Photography, Event Videography, Portraits, Albums, Frames and Creative Photography Services.">
+<meta name="keywords" content="NAVI Studio, Photography, Videography, Wedding Photography, Event Photography, Portrait Photography, Photo Frames, Albums">
+<meta name="author" content="NAVI DIGITAL HIGH TECH STUDIO & VIDEOS">
+
+<meta property="og:title" content="NAVI DIGITAL HIGH TECH STUDIO & VIDEOS">
+<meta property="og:description" content="Your Story. Our Frame. Photography • Videography • Creative">
+<meta property="og:type" content="website">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:Poppins,sans-serif;color:#161616;background:#fff}
-a{text-decoration:none;color:inherit}
-.container{width:92%;max-width:1200px;margin:auto}
+:root{
+  --gold:#d4af37;
+  --gold-light:#f4d77d;
+  --black:#050505;
+  --dark:#0d0d0d;
+  --dark2:#151515;
+  --white:#ffffff;
+  --gray:#a7a7a7;
+  --border:rgba(255,255,255,.10);
+  --shadow:0 20px 60px rgba(0,0,0,.45);
+}
 
-/* HEADER */
-header{height:82px;background:#fff;display:flex;align-items:center;position:sticky;top:0;z-index:1000;box-shadow:0 2px 12px #0000001f}
-.navbar{width:92%;max-width:1400px;margin:auto;display:flex;align-items:center;justify-content:space-between}
-.logo{display:flex;align-items:center;gap:10px}
-.logo-icon{width:75px;height:55px;border-radius:15px;background:linear-gradient(135deg,#22c7d6,#6340c8);display:flex;align-items:center;justify-content:center;color:#fff;font-size:32px}
-.logo-text h2{color:#6032bd;font-size:21px;line-height:1.1;font-weight:800}
-.logo-text h2 span{color:#20aeca}
-.logo-text small{font-size:9px;letter-spacing:4px;color:#666}
-.logo-text p{font-size:7px;color:#555;margin-top:2px}
-.nav-links{display:flex;align-items:center;gap:25px;font-size:12px;font-weight:600}
-.nav-links a{position:relative;padding:30px 0}
-.nav-links a:hover,.nav-links a.active{color:#6735c5}
-.nav-links a.active:after{content:"";position:absolute;bottom:0;left:0;width:100%;height:2px;background:#6735c5}
-.phone-btn{background:linear-gradient(135deg,#6632c7,#7a3dd0);color:#fff;padding:12px 18px;border-radius:8px;font-size:12px;font-weight:700}
-.menu-btn{display:none;font-size:25px;color:#6332c5}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:90px;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--black);
+  color:var(--white);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+body.light{
+  background:#f5f5f5;
+  color:#111;
+}
+
+body.light .section-dark,
+body.light .navbar,
+body.light footer{
+  background:#111;
+  color:#fff;
+}
+
+body.light .card,
+body.light .package-card,
+body.light .story-card{
+  background:#fff;
+  color:#111;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+.section{
+  padding:90px 0;
+}
+
+.section-dark{
+  background:var(--dark);
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.section-title span{
+  color:var(--gold);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:3px;
+}
+
+.section-title h2{
+  font-size:clamp(30px,5vw,48px);
+  margin:8px 0 12px;
+}
+
+.section-title p{
+  max-width:650px;
+  margin:auto;
+  color:var(--gray);
+}
+
+/* LOADER */
+.loader{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  background:var(--black);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.6s ease;
+}
+
+.loader.hide{
+  opacity:0;
+  visibility:hidden;
+}
+
+.loader-box{
+  text-align:center;
+}
+
+.loader-logo{
+  width:90px;
+  height:90px;
+  border:2px solid var(--gold);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  margin:auto;
+  color:var(--gold);
+  font-size:32px;
+  font-weight:900;
+  animation:pulseLogo 1.3s infinite;
+}
+
+.loader-box p{
+  margin-top:18px;
+  color:var(--gold-light);
+  font-size:12px;
+  letter-spacing:3px;
+}
+
+@keyframes pulseLogo{
+  50%{
+    transform:scale(1.08);
+    box-shadow:0 0 35px rgba(212,175,55,.3);
+  }
+}
+
+/* SCROLL PROGRESS */
+.scroll-progress{
+  position:fixed;
+  top:0;
+  left:0;
+  width:0;
+  height:3px;
+  background:var(--gold);
+  z-index:10001;
+}
+
+/* NAVBAR */
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:10000;
+  background:rgba(5,5,5,.90);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+
+.nav-inner{
+  min-height:78px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.brand-logo{
+  width:43px;
+  height:43px;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  color:var(--gold);
+  font-weight:900;
+}
+
+.brand-text span{
+  color:var(--gold);
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+
+.nav-links a{
+  font-size:13px;
+  color:#ddd;
+  transition:.3s;
+  position:relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+  color:var(--gold);
+}
+
+.nav-links a.active::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-9px;
+  height:2px;
+  background:var(--gold);
+}
+
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.icon-btn,
+.menu-btn{
+  width:40px;
+  height:40px;
+  border:1px solid var(--border);
+  background:transparent;
+  color:var(--white);
+  border-radius:50%;
+}
+
+.menu-btn{
+  display:none;
+}
 
 /* HERO */
-.hero{height:420px;position:relative;background:linear-gradient(90deg,#000000e6 0%,#000000b8 42%,#00000026 100%),url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85") center/cover;color:#fff;overflow:hidden}
-.hero-content{padding-top:75px}
-.hero h1{font-size:38px;line-height:1.15;font-weight:800;max-width:520px}
-.hero h1 span{color:#7836d0}
-.hero p{margin-top:14px;max-width:500px;font-size:14px;line-height:1.8}
-.hero-services{display:flex;gap:25px;margin-top:22px;font-size:13px}
-.hero-services div{display:flex;align-items:center;gap:8px}
-.hero-services i{font-size:24px}
-.hero-buttons{margin-top:25px;display:flex;gap:14px}
-.btn{padding:13px 27px;border-radius:6px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:10px}
-.btn-primary{background:#7130d0;color:#fff}
-.btn-whatsapp{background:#08c76b;color:#fff}
-.slider-dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:9px}
-.slider-dots span{width:10px;height:10px;border-radius:50%;background:#fff}
-.slider-dots span:first-child{background:#7835d1}
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  background:
+    linear-gradient(rgba(0,0,0,.63),rgba(0,0,0,.78)),
+    url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2000&q=85")
+    center/cover no-repeat;
+}
 
-/* TITLES */
-.section-title{text-align:center;margin:35px 0 20px}
-.section-title span{font-size:12px;color:#555;font-weight:600}
-.section-title h2{font-size:27px;margin-top:3px;font-weight:800}
-.section-title h2 span{color:#6a35c7;font-size:inherit}
+.hero-content{
+  max-width:850px;
+  padding-top:70px;
+}
 
-/* SERVICES */
-.services-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:15px}
-.service-card{min-height:185px;padding:15px 9px;text-align:center;border:1px solid #eee;border-radius:7px;box-shadow:0 2px 8px #00000014;transition:.3s}
-.service-card:hover{transform:translateY(-5px);box-shadow:0 8px 20px #682fc42e}
-.service-icon{width:58px;height:58px;margin:auto;border-radius:50%;background:linear-gradient(135deg,#5b29b9,#7835d0);color:#fff;display:flex;justify-content:center;align-items:center;font-size:25px}
-.service-card h3{font-size:12px;margin:10px 0 7px}
-.service-card p{font-size:9px;line-height:1.6;color:#666}
-.learn{display:block;color:#6732c5;font-size:9px;font-weight:600;margin-top:10px}
+.hero-tag{
+  color:var(--gold-light);
+  letter-spacing:4px;
+  font-size:13px;
+  font-weight:700;
+}
 
-/* WHY US */
-.why-us{margin-top:25px;padding:20px;border-radius:6px;color:#fff;background:linear-gradient(100deg,#7030c9,#10b7b5);display:grid;grid-template-columns:1.2fr repeat(6,1fr);align-items:center}
-.why-title{font-size:16px;font-weight:800}
-.why-item{text-align:center;border-left:1px solid #ffffff73;padding:0 10px}
-.why-item i{font-size:25px;margin-bottom:7px}
-.why-item h4{font-size:10px;line-height:1.4}
+.hero h1{
+  font-size:clamp(46px,8vw,92px);
+  line-height:1;
+  margin:20px 0;
+  text-transform:uppercase;
+}
+
+.hero h1 span{
+  color:var(--gold);
+}
+
+.hero p{
+  color:#ddd;
+  max-width:650px;
+  font-size:17px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:50px;
+  padding:0 24px;
+  border-radius:5px;
+  border:1px solid var(--gold);
+  transition:.3s;
+  font-weight:700;
+}
+
+.btn-primary{
+  background:var(--gold);
+  color:#050505;
+}
+
+.btn-primary:hover{
+  background:var(--gold-light);
+  transform:translateY(-2px);
+}
+
+.btn-outline{
+  background:transparent;
+  color:var(--white);
+}
+
+.btn-outline:hover{
+  background:var(--gold);
+  color:#050505;
+}
+
+.scroll-down{
+  position:absolute;
+  bottom:25px;
+  left:50%;
+  transform:translateX(-50%);
+  color:var(--gold);
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+/* STATS */
+.stats{
+  background:var(--dark2);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+
+.stat{
+  padding:28px 15px;
+  text-align:center;
+  border-right:1px solid var(--border);
+}
+
+.stat:last-child{
+  border-right:0;
+}
+
+.stat strong{
+  display:block;
+  color:var(--gold);
+  font-size:30px;
+}
+
+.stat span{
+  color:var(--gray);
+  font-size:13px;
+}
+
+/* CARDS */
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.card{
+  background:var(--dark2);
+  border:1px solid var(--border);
+  padding:28px;
+  border-radius:10px;
+  transition:.35s;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(212,175,55,.45);
+  box-shadow:var(--shadow);
+}
+
+.card-icon{
+  font-size:30px;
+  color:var(--gold);
+  margin-bottom:20px;
+}
+
+.card h3{
+  margin-bottom:10px;
+}
+
+.card p{
+  color:var(--gray);
+  font-size:14px;
+}
+
+/* FEATURED */
+.featured-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:15px;
+}
+
+.featured-item{
+  position:relative;
+  overflow:hidden;
+  border-radius:10px;
+  min-height:280px;
+}
+
+.featured-item:first-child{
+  grid-row:span 2;
+}
+
+.featured-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.6s;
+}
+
+.featured-item:hover img{
+  transform:scale(1.06);
+}
+
+.featured-overlay{
+  position:absolute;
+  inset:auto 0 0;
+  padding:25px;
+  background:linear-gradient(transparent,rgba(0,0,0,.85));
+}
+
+/* FILTER */
+.filters{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:30px;
+}
+
+.filter-btn{
+  background:transparent;
+  color:#ddd;
+  border:1px solid var(--border);
+  padding:9px 17px;
+  border-radius:30px;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+  background:var(--gold);
+  color:#050505;
+  border-color:var(--gold);
+}
 
 /* GALLERY */
-.gallery-tabs{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin-bottom:15px}
-.gallery-tabs button{border:1px solid #ddd;background:#fff;padding:6px 22px;border-radius:20px;font-size:10px;cursor:pointer}
-.gallery-tabs button.active,.gallery-tabs button:hover{background:#7132c8;color:#fff}
-.gallery-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}
-.gallery-item{height:155px;border-radius:4px;overflow:hidden}
-.gallery-item img{width:100%;height:100%;object-fit:cover;transition:.4s}
-.gallery-item:hover img{transform:scale(1.08)}
+.gallery-grid{
+  columns:4 220px;
+  column-gap:15px;
+}
 
-/* REVIEWS */
-.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:15px auto 35px;max-width:1050px}
-.review{padding:17px;border-radius:8px;box-shadow:0 2px 12px #00000017}
-.stars{color:#ffc400;margin-bottom:8px}
-.review p{font-size:11px;line-height:1.6;color:#333}
-.reviewer{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:11px;font-weight:600}
-.reviewer img{width:32px;height:32px;object-fit:cover;border-radius:50%}
+.gallery-item{
+  position:relative;
+  break-inside:avoid;
+  margin-bottom:15px;
+  border-radius:9px;
+  overflow:hidden;
+  cursor:zoom-in;
+  background:var(--dark2);
+}
+
+.gallery-item img{
+  width:100%;
+  height:auto;
+  transition:.5s;
+}
+
+.gallery-item:hover img{
+  transform:scale(1.035);
+}
+
+.gallery-label{
+  position:absolute;
+  left:10px;
+  bottom:10px;
+  background:rgba(0,0,0,.72);
+  color:var(--gold-light);
+  padding:5px 9px;
+  border-radius:4px;
+  font-size:11px;
+  letter-spacing:1px;
+}
+
+.gallery-item.hidden{
+  display:none;
+}
+
+/* VIDEO */
+.video-box{
+  min-height:450px;
+  border-radius:15px;
+  overflow:hidden;
+  position:relative;
+  display:grid;
+  place-items:center;
+  background:
+    linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.7)),
+    url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1600&q=85")
+    center/cover;
+}
+
+.play-btn{
+  width:85px;
+  height:85px;
+  border-radius:50%;
+  border:2px solid var(--gold);
+  background:rgba(0,0,0,.55);
+  color:var(--gold);
+  font-size:30px;
+  display:grid;
+  place-items:center;
+  transition:.3s;
+}
+
+.play-btn:hover{
+  transform:scale(1.1);
+  background:var(--gold);
+  color:#050505;
+}
+
+/* BEFORE AFTER */
+.before-after{
+  position:relative;
+  height:480px;
+  overflow:hidden;
+  border-radius:12px;
+  user-select:none;
+  touch-action:none;
+}
+
+.before-after img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.after-image{
+  clip-path:inset(0 0 0 50%);
+}
+
+.slider-line{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:3px;
+  background:var(--white);
+  transform:translateX(-50%);
+  pointer-events:none;
+}
+
+.slider-handle{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:var(--gold);
+  color:#050505;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  box-shadow:0 5px 25px rgba(0,0,0,.5);
+}
+
+/* STORIES */
+.story-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.story-card{
+  background:var(--dark2);
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.story-card img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+}
+
+.story-content{
+  padding:22px;
+}
+
+.story-content p{
+  color:var(--gray);
+  font-size:14px;
+}
+
+/* PACKAGES */
+.package-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.package-card{
+  background:var(--dark2);
+  border:1px solid var(--border);
+  padding:30px;
+  border-radius:12px;
+  position:relative;
+  overflow:hidden;
+}
+
+.package-card.featured{
+  border-color:var(--gold);
+}
+
+.package-card.featured::before{
+  content:"POPULAR";
+  position:absolute;
+  right:-32px;
+  top:15px;
+  background:var(--gold);
+  color:#050505;
+  font-size:10px;
+  font-weight:800;
+  padding:5px 35px;
+  transform:rotate(45deg);
+}
+
+.package-card h3{
+  color:var(--gold-light);
+}
+
+.price{
+  font-size:35px;
+  font-weight:800;
+  margin:12px 0;
+}
+
+.package-card ul{
+  list-style:none;
+  color:var(--gray);
+  font-size:14px;
+}
+
+.package-card li{
+  padding:7px 0;
+}
+
+.package-card li::before{
+  content:"✓ ";
+  color:var(--gold);
+}
+
+.demo-note{
+  color:var(--gold);
+  font-size:11px;
+  margin-top:15px;
+}
+
+/* FRAMES */
+.frames{
+  background:var(--dark);
+}
+
+.frame-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.frame-card{
+  padding:28px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--dark2);
+  text-align:center;
+}
+
+.frame-card h3{
+  color:var(--gold-light);
+}
+
+.frame-price{
+  color:var(--gold);
+  font-size:28px;
+  font-weight:800;
+  margin-top:8px;
+}
+
+/* WHY */
+.why-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  align-items:center;
+}
+
+.why-image{
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.why-image img{
+  width:100%;
+  height:550px;
+  object-fit:cover;
+}
+
+.why-list{
+  display:grid;
+  gap:18px;
+}
+
+.why-item{
+  display:flex;
+  gap:15px;
+}
+
+.why-number{
+  width:40px;
+  height:40px;
+  flex:none;
+  border:1px solid var(--gold);
+  color:var(--gold);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+}
+
+.why-item p{
+  color:var(--gray);
+}
+
+/* TESTIMONIAL */
+.testimonial-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.testimonial{
+  padding:28px;
+  background:var(--dark2);
+  border:1px solid var(--border);
+  border-radius:10px;
+}
+
+.stars{
+  color:var(--gold);
+  margin-bottom:12px;
+}
+
+.testimonial p{
+  color:var(--gray);
+}
+
+.testimonial strong{
+  display:block;
+  margin-top:15px;
+}
+
+/* FORM */
+.form-wrap{
+  max-width:850px;
+  margin:auto;
+  background:var(--dark2);
+  padding:35px;
+  border:1px solid var(--border);
+  border-radius:14px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.form-group{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.form-group.full{
+  grid-column:1/-1;
+}
+
+.form-group label{
+  color:#ddd;
+  font-size:13px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;
+  background:#090909;
+  color:#fff;
+  border:1px solid var(--border);
+  padding:13px;
+  border-radius:6px;
+  outline:none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  border-color:var(--gold);
+}
+
+.form-group textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.form-submit{
+  margin-top:20px;
+}
+
+/* CONTACT */
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.contact-card{
+  padding:25px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  text-align:center;
+  background:var(--dark2);
+}
+
+.contact-icon{
+  color:var(--gold);
+  font-size:25px;
+  margin-bottom:10px;
+}
+
+.contact-card p{
+  color:var(--gray);
+  font-size:14px;
+}
+
+/* CTA */
+.cta{
+  padding:70px 0;
+  background:
+    linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),
+    url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1800&q=85")
+    center/cover;
+  text-align:center;
+}
+
+.cta h2{
+  font-size:clamp(30px,5vw,52px);
+}
+
+.cta p{
+  color:#ddd;
+  margin:10px auto 25px;
+}
 
 /* FOOTER */
-footer{background:#101426;color:#fff;padding:35px 0 15px}
-.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:30px}
-.footer-logo h2{color:#6338cb;font-size:19px}
-.footer-logo span{color:#16b8c6}
-.footer-logo p{color:#ddd;font-size:10px;line-height:1.7;margin-top:12px}
-.footer-title{font-size:13px;margin-bottom:13px}
-.footer-links a{display:block;font-size:10px;color:#ddd;margin:8px 0}
-.contact-line{display:flex;gap:10px;font-size:10px;color:#ddd;margin:9px 0}
-.contact-line i{color:#1bc8c0}
-.booking input,.booking select{width:100%;height:34px;margin-bottom:8px;padding:8px;border-radius:4px;border:1px solid #555;background:#171c30;color:#fff;font-size:10px}
-.booking button{width:100%;border:0;padding:10px;background:#7133cc;color:#fff;border-radius:4px;font-weight:700;cursor:pointer}
-.copyright{text-align:center;border-top:1px solid #303548;margin-top:25px;padding-top:13px;font-size:9px;color:#ddd}
+footer{
+  background:#030303;
+  border-top:1px solid var(--border);
+  padding:50px 0 25px;
+}
 
-/* WHATSAPP */
-.whatsapp{position:fixed;right:18px;bottom:20px;width:58px;height:58px;border-radius:50%;background:#0ac76c;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 4px 15px #0000004d;z-index:999}
+.footer-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:40px;
+}
+
+.footer-brand p{
+  color:var(--gray);
+  max-width:400px;
+  margin-top:12px;
+}
+
+footer h4{
+  color:var(--gold);
+  margin-bottom:14px;
+}
+
+footer ul{
+  list-style:none;
+}
+
+footer li{
+  margin:7px 0;
+  color:var(--gray);
+  font-size:14px;
+}
+
+footer a:hover{
+  color:var(--gold);
+}
+
+.copyright{
+  border-top:1px solid var(--border);
+  margin-top:35px;
+  padding-top:20px;
+  text-align:center;
+  color:#777;
+  font-size:12px;
+}
+
+/* FLOATING BUTTONS */
+.whatsapp-float,
+.top-btn{
+  position:fixed;
+  right:20px;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  z-index:5000;
+  box-shadow:0 8px 30px rgba(0,0,0,.35);
+}
+
+.whatsapp-float{
+  bottom:85px;
+  background:#25d366;
+  color:#fff;
+  font-size:24px;
+}
+
+.top-btn{
+  bottom:20px;
+  background:var(--gold);
+  color:#050505;
+  border:0;
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+}
+
+.top-btn.show{
+  opacity:1;
+  visibility:visible;
+}
+
+/* LIGHTBOX */
+.lightbox{
+  position:fixed;
+  inset:0;
+  z-index:99998;
+  background:rgba(0,0,0,.96);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .25s ease,visibility .25s ease;
+}
+
+.lightbox.show{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+
+.lightbox-content{
+  position:relative;
+  max-width:min(1200px,94vw);
+  max-height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.lightbox-image{
+  max-width:calc(100vw - 80px);
+  max-height:84vh;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  border-radius:5px;
+  opacity:0;
+  transition:opacity .2s ease;
+}
+
+.lightbox-image.loaded{
+  opacity:1;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next{
+  position:fixed;
+  width:48px;
+  height:48px;
+  border:1px solid var(--border);
+  background:rgba(0,0,0,.75);
+  color:#fff;
+  border-radius:50%;
+  z-index:2;
+}
+
+.lightbox-close{
+  top:25px;
+  right:25px;
+  font-size:25px;
+}
+
+.lightbox-prev{
+  left:25px;
+  top:50%;
+}
+
+.lightbox-next{
+  right:25px;
+  top:50%;
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover{
+  background:var(--gold);
+  color:#050505;
+}
+
+.lightbox-loader{
+  position:absolute;
+  width:48px;
+  height:48px;
+  border:3px solid rgba(255,255,255,.25);
+  border-top-color:var(--gold);
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+/* TOAST */
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translate(-50%,20px);
+  background:#111;
+  color:#fff;
+  border:1px solid var(--gold);
+  padding:12px 18px;
+  border-radius:7px;
+  z-index:100000;
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  font-size:13px;
+  max-width:90%;
+  text-align:center;
+}
+
+.toast.show{
+  opacity:1;
+  visibility:visible;
+  transform:translate(-50%,0);
+}
+
+/* REVEAL */
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
 
 /* RESPONSIVE */
-@media(max-width:1100px){
-.nav-links{gap:14px}
-.services-grid{grid-template-columns:repeat(4,1fr)}
-.why-us{grid-template-columns:repeat(3,1fr);gap:15px}
-.why-title{grid-column:1/-1;text-align:center;margin-bottom:8px}
-.why-item{border:0}
-.gallery-grid{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){
+
+  .nav-links{
+    position:absolute;
+    top:78px;
+    left:0;
+    right:0;
+    background:#080808;
+    border-bottom:1px solid var(--border);
+    display:none;
+    flex-direction:column;
+    align-items:stretch;
+    padding:15px 5%;
+  }
+
+  .nav-links.open{
+    display:flex;
+  }
+
+  .nav-links a{
+    padding:12px 0;
+  }
+
+  .nav-links a.active::after{
+    display:none;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .cards-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .stats-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .stat:nth-child(2){
+    border-right:0;
+  }
+
+  .stat:nth-child(-n+2){
+    border-bottom:1px solid var(--border);
+  }
+
+  .featured-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .featured-item:first-child{
+    grid-row:auto;
+  }
+
+  .story-grid,
+  .package-grid,
+  .testimonial-grid,
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+
+  .why-grid{
+    grid-template-columns:1fr;
+  }
+
+  .frame-grid{
+    grid-template-columns:1fr 1fr 1fr;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr 1fr;
+  }
 }
-@media(max-width:768px){
-header{height:70px}
-.logo-text h2{font-size:14px}
-.logo-text small,.logo-text p{display:none}
-.logo-icon{width:50px;height:45px;font-size:24px}
-.nav-links{display:none;position:absolute;top:70px;left:0;width:100%;background:#fff;flex-direction:column;gap:0;padding:10px 0;box-shadow:0 8px 15px #0000001a}
-.nav-links.show{display:flex}
-.nav-links a{width:100%;text-align:center;padding:13px}
-.phone-btn{display:none}
-.menu-btn{display:block}
-.hero{height:520px}
-.hero-content{padding-top:65px}
-.hero h1{font-size:30px}
-.hero-services{flex-direction:column;gap:12px}
-.services-grid{grid-template-columns:repeat(2,1fr)}
-.gallery-grid{grid-template-columns:repeat(2,1fr)}
-.gallery-item{height:140px}
-.reviews{grid-template-columns:1fr}
-.footer-grid{grid-template-columns:1fr 1fr}
+
+@media(max-width:600px){
+
+  .section{
+    padding:70px 0;
+  }
+
+  .brand-text{
+    display:none;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  .hero-buttons{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .btn{
+    width:100%;
+  }
+
+  .cards-grid,
+  .featured-grid,
+  .frame-grid{
+    grid-template-columns:1fr;
+  }
+
+  .featured-item,
+  .featured-item:first-child{
+    min-height:300px;
+  }
+
+  .form-wrap{
+    padding:22px;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .form-group.full{
+    grid-column:auto;
+  }
+
+  .why-image img{
+    height:380px;
+  }
+
+  .before-after{
+    height:330px;
+  }
+
+  .lightbox{
+    padding:10px;
+  }
+
+  .lightbox-image{
+    max-width:calc(100vw - 30px);
+    max-height:78vh;
+  }
+
+  .lightbox-prev{
+    left:10px;
+  }
+
+  .lightbox-next{
+    right:10px;
+  }
+
+  .lightbox-close{
+    top:12px;
+    right:12px;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .whatsapp-float{
+    right:15px;
+  }
+
+  .top-btn{
+    right:15px;
+  }
 }
-@media(max-width:480px){
-.container{width:94%}
-.hero{height:500px}
-.hero h1{font-size:27px}
-.hero p{font-size:12px}
-.hero-buttons{flex-direction:column;width:180px}
-.services-grid{grid-template-columns:1fr 1fr;gap:10px}
-.service-card{min-height:190px}
-.why-us{grid-template-columns:1fr 1fr}
-.gallery-grid{grid-template-columns:1fr 1fr}
-.footer-grid{grid-template-columns:1fr}
+
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    scroll-behavior:auto!important;
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+  }
+
+  .reveal{
+    opacity:1;
+    transform:none;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<div class="navbar">
-<a href="#home" class="logo">
-<div class="logo-icon"><i class="fa-solid fa-camera"></i></div>
-<div class="logo-text">
-<h2>NAVI <span>DIGITAL HIGH</span></h2>
-<small>TECH STUDIO & VIDEOS</small>
-<p>"CAPTURING MEMORIES CREATING STORIES"</p>
-</div>
-</a>
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
-<nav class="nav-links" id="navLinks">
-<a href="#home" class="active">HOME</a>
-<a href="#about">ABOUT US</a>
-<a href="#services">SERVICES</a>
-<a href="#gallery">GALLERY</a>
-<a href="#packages">PACKAGES</a>
-<a href="#reviews">REVIEWS</a>
-<a href="#contact">CONTACT US</a>
-</nav>
-
-<a href="tel:+919876544210" class="phone-btn"><i class="fa-solid fa-phone"></i> 9876544210</a>
-<div class="menu-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></div>
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-box">
+    <div class="loader-logo">NV</div>
+    <p>NAVI DIGITAL HIGH TECH STUDIO & VIDEOS</p>
+  </div>
 </div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="container nav-inner">
+
+    <a href="#home" class="brand">
+      <div class="brand-logo">NV</div>
+      <div class="brand-text">
+        <span>NAVI</span> STUDIO
+      </div>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#gallery" class="nav-link">Gallery</a>
+      <a href="#packages" class="nav-link">Packages</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">☼</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+    </div>
+
+  </div>
 </header>
 
+<!-- HERO -->
 <section class="hero" id="home">
-<div class="container">
-<div class="hero-content">
-<h1>CAPTURING MEMORIES<br><span>CREATING STORIES</span></h1>
-<p>We transform your special moments into timeless memories with creativity and passion.</p>
-<div class="hero-services">
-<div><i class="fa-solid fa-camera"></i> Photography</div>
-<div><i class="fa-solid fa-video"></i> Videography</div>
-<div><i class="fa-solid fa-image"></i> Printing & Framing</div>
-</div>
-<div class="hero-buttons">
-<a href="#contact" class="btn btn-primary">BOOK NOW <i class="fa-solid fa-arrow-right"></i></a>
-<a href="https://wa.me/919876544210" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WHATSAPP US</a>
-</div>
-</div>
-</div>
-<div class="slider-dots"><span></span><span></span><span></span><span></span></div>
+  <div class="container hero-content reveal">
+
+    <div class="hero-tag">
+      PHOTOGRAPHY • VIDEOGRAPHY • CREATIVE
+    </div>
+
+    <h1>
+      YOUR STORY.<br>
+      <span>OUR FRAME.</span>
+    </h1>
+
+    <p>
+      Capturing weddings, events, portraits and unforgettable moments
+      with creativity, technology and attention to detail.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#gallery" class="btn btn-primary">Explore Work</a>
+      <a href="#enquiry" class="btn btn-outline">Book Your Event</a>
+    </div>
+
+  </div>
+
+  <div class="scroll-down">SCROLL ↓</div>
 </section>
 
-<section id="services">
-<div class="container">
-<div class="section-title"><span>WHAT WE OFFER</span><h2>OUR <span>SERVICES</span></h2></div>
-<div class="services-grid">
+<!-- STATS -->
+<section class="stats">
+  <div class="container stats-grid">
 
-<div class="service-card"><div class="service-icon"><i class="fa-solid fa-user"></i></div><h3>PASSPORT<br>PHOTOS</h3><p>High quality passport photos in minutes</p><a class="learn">LEARN MORE →</a></div>
-<div class="service-card"><div class="service-icon"><i class="fa-solid fa-camera"></i></div><h3>STUDIO<br>PORTRAITS</h3><p>Professional studio portraits & photoshoots</p><a class="learn">LEARN MORE →</a></div>
-<div class="service-card"><div class="service-icon"><i class="fa-solid fa-ring"></i></div><h3>WEDDING<br>PHOTOGRAPHY</h3><p>Candid & traditional wedding photography</p><a class="learn">LEARN MORE →</a></div>
-<div class="service-card"><div class="service-icon"><i class="fa-solid fa-video"></i></div><h3>WEDDING<br>VIDEOGRAPHY</h3><p>Cinematic wedding films to cherish forever</p><a class="learn">LEARN MORE →</a></div>
-<div class="service-card"><div class="service-icon"><i class="fa-solid fa-calendar-check"></i></div><h3>EVENT<br>COVERAGE</h3><p>All types of events covered professionally</p><a class="learn">LEARN MORE →</a></div>
-<div class="service-card"><div class="service-icon"><i class="fa-solid fa-print"></i></div><h3>PHOTO<br>PRINTING</h3><p>Instant photo printing in various sizes</p><a class="learn">LEARN MORE →</a></div>
-<div class="service-card"><div class="service-icon"><i class="fa-regular fa-image"></i></div><h3>FRAMES &<br>ALBUMS</h3><p>Beautiful frames & customized albums</p><a class="learn">LEARN MORE →</a></div>
+    <div class="stat">
+      <strong>∞</strong>
+      <span>Memories</span>
+    </div>
 
-</div>
-</div>
+    <div class="stat">
+      <strong>4K</strong>
+      <span>Video Quality</span>
+    </div>
+
+    <div class="stat">
+      <strong>24/7</strong>
+      <span>Creative Passion</span>
+    </div>
+
+    <div class="stat">
+      <strong>100%</strong>
+      <span>Dedication</span>
+    </div>
+
+  </div>
 </section>
 
-<section>
-<div class="container">
-<div class="why-us">
-<div class="why-title">WHY<br>CHOOSE US?</div>
-<div class="why-item"><i class="fa-solid fa-camera"></i><h4>HIGH QUALITY<br>EQUIPMENT</h4></div>
-<div class="why-item"><i class="fa-solid fa-users"></i><h4>EXPERIENCED<br>PROFESSIONALS</h4></div>
-<div class="why-item"><i class="fa-solid fa-truck-fast"></i><h4>FAST<br>DELIVERY</h4></div>
-<div class="why-item"><i class="fa-solid fa-award"></i><h4>AFFORDABLE<br>PRICING</h4></div>
-<div class="why-item"><i class="fa-regular fa-face-smile"></i><h4>CUSTOMER<br>SATISFACTION</h4></div>
-<div class="why-item"><i class="fa-solid fa-sliders"></i><h4>CREATIVE<br>EDITING</h4></div>
-</div>
-</div>
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="container">
+
+    <div class="section-title reveal">
+      <span>WHAT WE DO</span>
+      <h2>Our Services</h2>
+      <p>Professional visual services designed to preserve your most important moments.</p>
+    </div>
+
+    <div class="cards-grid">
+
+      <div class="card reveal">
+        <div class="card-icon">📸</div>
+        <h3>Wedding Photography</h3>
+        <p>Candid and traditional wedding photography with creative storytelling.</p>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">🎥</div>
+        <h3>Event Videography</h3>
+        <p>Beautiful event films with cinematic visuals and professional editing.</p>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">👤</div>
+        <h3>Portrait Photography</h3>
+        <p>Professional portraits, family photos, personal branding and creative shoots.</p>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">🖼️</div>
+        <h3>Frames & Albums</h3>
+        <p>Premium photo frames, albums, printing and memorable presentation.</p>
+      </div>
+
+    </div>
+  </div>
 </section>
 
-<section id="gallery">
-<div class="container">
-<div class="section-title"><h2>OUR <span>GALLERY</span></h2></div>
-<div class="gallery-tabs">
-<button class="active">ALL</button><button>WEDDING</button><button>PRE WEDDING</button><button>PORTRAITS</button><button>EVENTS</button><button>FRAMES</button><button>DRONE</button>
-</div>
-<div class="gallery-grid">
-<div class="gallery-item"><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=700&q=80"></div>
-<div class="gallery-item"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=700&q=80"></div>
-<div class="gallery-item"><img src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=700&q=80"></div>
-<div class="gallery-item"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=700&q=80"></div>
-<div class="gallery-item"><img src="https://images.unsplash.com/photo-1564078516393-cf04bd966897?auto=format&fit=crop&w=700&q=80"></div>
-<div class="gallery-item"><img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=700&q=80"></div>
-</div>
-</div>
+<!-- FEATURED WORK -->
+<section class="section section-dark">
+  <div class="container">
+
+    <div class="section-title reveal">
+      <span>FEATURED</span>
+      <h2>Our Work</h2>
+      <p>A small demo collection representing the visual style of NAVI.</p>
+    </div>
+
+    <div class="featured-grid">
+
+      <div class="featured-item reveal">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85"
+          alt="Wedding photography">
+        <div class="featured-overlay">
+          <h3>Wedding Stories</h3>
+        </div>
+      </div>
+
+      <div class="featured-item reveal">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=900&q=85"
+          alt="Wedding couple">
+        <div class="featured-overlay">
+          <h3>Couple</h3>
+        </div>
+      </div>
+
+      <div class="featured-item reveal">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=85"
+          alt="Wedding event">
+        <div class="featured-overlay">
+          <h3>Celebration</h3>
+        </div>
+      </div>
+
+      <div class="featured-item reveal">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=900&q=85"
+          alt="Wedding portrait">
+        <div class="featured-overlay">
+          <h3>Portrait</h3>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
 
-<section id="reviews">
-<div class="container">
-<div class="section-title"><h2>WHAT OUR <span>CLIENTS SAY</span></h2></div>
-<div class="reviews">
+<!-- GALLERY -->
+<section class="section" id="gallery">
+  <div class="container">
 
-<div class="review"><div class="stars">★★★★★</div><p>"Excellent photography and videography! The team is very professional and delivers beyond expectations."</p><div class="reviewer"><img src="https://randomuser.me/api/portraits/women/44.jpg">Priya S.</div></div>
-<div class="review"><div class="stars">★★★★★</div><p>"Our wedding memories are so beautifully captured by Navi Digital High Tech Studio. Highly recommended!"</p><div class="reviewer"><img src="https://randomuser.me/api/portraits/men/32.jpg">Karthik R.</div></div>
-<div class="review"><div class="stars">★★★★★</div><p>"Best studio in town for passport photos, printing and framing. Very fast service and polite staff."</p><div class="reviewer"><img src="https://randomuser.me/api/portraits/women/68.jpg">Meena L.</div></div>
+    <div class="section-title reveal">
+      <span>OUR WORK</span>
+      <h2>Demo Gallery</h2>
+      <p>Photography moments captured with style & creativity.</p>
+    </div>
 
-</div>
-</div>
+    <div class="filters reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="wedding">Wedding</button>
+      <button class="filter-btn" data-filter="portrait">Portrait</button>
+      <button class="filter-btn" data-filter="events">Events</button>
+      <button class="filter-btn" data-filter="creative">Creative</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+
+      <div class="gallery-item reveal" data-category="wedding"
+           data-index="0">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80"
+          alt="Wedding couple">
+        <span class="gallery-label">WEDDING</span>
+      </div>
+
+      <div class="gallery-item reveal" data-category="portrait"
+           data-index="1">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80"
+          alt="Portrait">
+        <span class="gallery-label">PORTRAIT</span>
+      </div>
+
+      <div class="gallery-item reveal" data-category="events"
+           data-index="2">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=900&q=80"
+          alt="Event">
+        <span class="gallery-label">EVENT</span>
+      </div>
+
+      <div class="gallery-item reveal" data-category="creative"
+           data-index="3">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80"
+          alt="Creative event">
+        <span class="gallery-label">CREATIVE</span>
+      </div>
+
+      <div class="gallery-item reveal" data-category="wedding"
+           data-index="4">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80"
+          alt="Wedding decoration">
+        <span class="gallery-label">WEDDING</span>
+      </div>
+
+      <div class="gallery-item reveal" data-category="portrait"
+           data-index="5">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80"
+          alt="Female portrait">
+        <span class="gallery-label">PORTRAIT</span>
+      </div>
+
+      <div class="gallery-item reveal" data-category="events"
+           data-index="6">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80"
+          alt="Event crowd">
+        <span class="gallery-label">EVENT</span>
+      </div>
+
+      <div class="gallery-item reveal" data-category="creative"
+           data-index="7">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=900&q=80"
+          alt="Creative photography">
+        <span class="gallery-label">CREATIVE</span>
+      </div>
+
+      <div class="gallery-item reveal" data-category="wedding"
+           data-index="8">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=900&q=80"
+          alt="Wedding bride">
+        <span class="gallery-label">WEDDING</span>
+      </div>
+
+      <div class="gallery-item reveal" data-category="portrait"
+           data-index="9">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80"
+          alt="Portrait photography">
+        <span class="gallery-label">PORTRAIT</span>
+      </div>
+
+      <div class="gallery-item reveal" data-category="events"
+           data-index="10">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1496337589254-7e19d01cec44?auto=format&fit=crop&w=900&q=80"
+          alt="Event photography">
+        <span class="gallery-label">EVENT</span>
+      </div>
+
+      <div class="gallery-item reveal" data-category="creative"
+           data-index="11">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=900&q=80"
+          alt="Creative event photography">
+        <span class="gallery-label">CREATIVE</span>
+      </div>
+
+      <div class="gallery-item reveal" data-category="wedding"
+           data-index="12">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=900&q=80"
+          alt="Wedding moment">
+        <span class="gallery-label">WEDDING</span>
+      </div>
+
+      <div class="gallery-item reveal" data-category="portrait"
+           data-index="13">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=900&q=80"
+          alt="Male portrait">
+        <span class="gallery-label">PORTRAIT</span>
+      </div>
+
+      <div class="gallery-item reveal" data-category="events"
+           data-index="14">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=900&q=80"
+          alt="Event celebration">
+        <span class="gallery-label">EVENT</span>
+      </div>
+
+      <div class="gallery-item reveal" data-category="creative"
+           data-index="15">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80"
+          alt="Creative photography">
+        <span class="gallery-label">CREATIVE</span>
+      </div>
+
+    </div>
+
+    <p class="demo-note" style="text-align:center;margin-top:25px;">
+      Demo images are used for website testing. Replace them with your own NAVI photographs before launch.
+    </p>
+
+  </div>
 </section>
 
-<footer id="contact">
-<div class="container">
-<div class="footer-grid">
+<!-- VIDEO STORIES -->
+<section class="section section-dark">
+  <div class="container">
 
-<div class="footer-logo">
-<h2>NAVI <span>DIGITAL HIGH</span></h2>
-<p>TECH STUDIO & VIDEOS</p>
-<p>We capture your moments and create stories that last a lifetime. Thank you for trusting us with your special days.</p>
-</div>
+    <div class="section-title reveal">
+      <span>VIDEO STORIES</span>
+      <h2>Moments in Motion</h2>
+      <p>Your future NAVI cinematic wedding and event videos can be displayed here.</p>
+    </div>
 
-<div>
-<h3 class="footer-title">QUICK LINKS</h3>
-<div class="footer-links">
-<a href="#home">› Home</a><a href="#about">› About Us</a><a href="#services">› Services</a><a href="#gallery">› Gallery</a><a href="#packages">› Packages</a><a href="#reviews">› Reviews</a>
-</div>
-</div>
+    <div class="video-box reveal">
+      <button class="play-btn" id="videoDemoBtn" aria-label="Play video">▶</button>
+    </div>
 
-<div>
-<h3 class="footer-title">CONTACT US</h3>
-<div class="contact-line"><i class="fa-brands fa-whatsapp"></i>9876544210</div>
-<div class="contact-line"><i class="fa-solid fa-phone"></i>9876544210</div>
-<div class="contact-line"><i class="fa-solid fa-envelope"></i>navi123@gmail.com</div>
-<div class="contact-line"><i class="fa-solid fa-location-dot"></i>Address will be updated soon</div>
-</div>
+  </div>
+</section>
 
-<div class="booking">
-<h3 class="footer-title">BOOK APPOINTMENT</h3>
-<form onsubmit="bookAppointment(event)">
-<input type="text" placeholder="Your Name" required>
-<input type="tel" placeholder="Phone Number" required>
-<select required>
-<option value="">Select Service</option>
-<option>Passport Photos</option><option>Studio Portraits</option><option>Wedding Photography</option><option>Wedding Videography</option><option>Event Coverage</option><option>Photo Printing</option><option>Frames & Albums</option>
-</select>
-<input type="date" required>
-<button type="submit">SUBMIT NOW</button>
-</form>
-</div>
+<!-- BEFORE AFTER -->
+<section class="section">
+  <div class="container">
 
-</div>
-<div class="copyright">© 2026 NAVI DIGITAL HIGH TECH STUDIO & VIDEOS. All Rights Reserved.</div>
-</div>
+    <div class="section-title reveal">
+      <span>EDITING</span>
+      <h2>Before & After</h2>
+      <p>Drag the slider to compare the editing presentation.</p>
+    </div>
+
+    <div class="before-after reveal" id="beforeAfter">
+
+      <img
+        src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=85"
+        alt="After editing">
+
+      <img
+        class="after-image"
+        id="beforeImage"
+        src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=45"
+        alt="Before editing">
+
+      <div class="slider-line" id="sliderLine"></div>
+
+      <div class="slider-handle" id="sliderHandle">
+        ↔
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- STORIES -->
+<section class="section section-dark">
+  <div class="container">
+
+    <div class="section-title reveal">
+      <span>COUPLE STORIES</span>
+      <h2>Beautiful Memories</h2>
+      <p>Demo storytelling layouts for future NAVI clients.</p>
+    </div>
+
+    <div class="story-grid">
+
+      <div class="story-card reveal">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1000&q=85"
+          alt="Couple story">
+        <div class="story-content">
+          <h3>Forever Begins</h3>
+          <p>A collection of natural moments and timeless memories.</p>
+        </div>
+      </div>
+
+      <div class="story-card reveal">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=85"
+          alt="Wedding celebration">
+        <div class="story-content">
+          <h3>The Celebration</h3>
+          <p>Every smile, every emotion and every celebration matters.</p>
+        </div>
+      </div>
+
+      <div class="story-card reveal">
+        <img loading="lazy"
+          src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=85"
+          alt="Wedding couple">
+        <div class="story-content">
+          <h3>Our Story</h3>
+          <p>Creative frames designed to tell your story naturally.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="section" id="packages">
+  <div class="container">
+
+    <div class="section-title reveal">
+      <span>WEDDING COLLECTIONS</span>
+      <h2>Our Packages</h2>
+      <p>Demo pricing. Final packages can be customised according to your event.</p>
+    </div>
+
+    <div class="package-grid">
+
+      <div class="package-card reveal">
+        <h3>Classic</h3>
+        <div class="price">₹25,000+</div>
+        <ul>
+          <li>Wedding Photography</li>
+          <li>Basic Editing</li>
+          <li>Album Design</li>
+          <li>Selected Prints</li>
+          <li>Digital Delivery</li>
+        </ul>
+        <p class="demo-note">Demo package</p>
+      </div>
+
+      <div class="package-card featured reveal">
+        <h3>Premium</h3>
+        <div class="price">₹40,000+</div>
+        <ul>
+          <li>Photography + Videography</li>
+          <li>Advanced Editing</li>
+          <li>Premium Album</li>
+          <li>Frames</li>
+          <li>Digital Delivery</li>
+        </ul>
+        <p class="demo-note">Demo package</p>
+      </div>
+
+      <div class="package-card reveal">
+        <h3>Signature</h3>
+        <div class="price">₹60,000+</div>
+        <ul>
+          <li>Full Event Coverage</li>
+          <li>Cinematic Video</li>
+          <li>Premium Album</li>
+          <li>Premium Frames</li>
+          <li>Pen Drive Delivery</li>
+        </ul>
+        <p class="demo-note">Demo package</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- FRAMES -->
+<section class="section frames" id="frames">
+  <div class="container">
+
+    <div class="section-title reveal">
+      <span>PHOTO FRAMES</span>
+      <h2>Frame Collection</h2>
+      <p>Current sample frame pricing.</p>
+    </div>
+
+    <div class="frame-grid">
+
+      <div class="frame-card reveal">
+        <h3>12 × 8</h3>
+        <div class="frame-price">₹350</div>
+      </div>
+
+      <div class="frame-card reveal">
+        <h3>12 × 10</h3>
+        <div class="frame-price">₹550</div>
+      </div>
+
+      <div class="frame-card reveal">
+        <h3>12 × 15</h3>
+        <div class="frame-price">₹900</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY NAVI -->
+<section class="section" id="about">
+  <div class="container why-grid">
+
+    <div class="why-image reveal">
+      <img loading="lazy"
+        src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?auto=format&fit=crop&w=1200&q=85"
+        alt="Professional photography">
+    </div>
+
+    <div class="reveal">
+
+      <div class="section-title" style="text-align:left;margin-bottom:30px;">
+        <span>WHY NAVI</span>
+        <h2>More Than A Photograph</h2>
+        <p>We aim to turn moments into memories that can be revisited for years.</p>
+      </div>
+
+      <div class="why-list">
+
+        <div class="why-item">
+          <div class="why-number">01</div>
+          <div>
+            <h3>Creative Storytelling</h3>
+            <p>We focus on emotions, details and natural moments.</p>
+          </div>
+        </div>
+
+        <div class="why-item">
+          <div class="why-number">02</div>
+          <div>
+            <h3>Modern Technology</h3>
+            <p>Digital workflows and modern editing for clean final output.</p>
+          </div>
+        </div>
+
+        <div class="why-item">
+          <div class="why-number">03</div>
+          <div>
+            <h3>Personal Attention</h3>
+            <p>Every event deserves a customised photography approach.</p>
+          </div>
+        </div>
+
+        <div class="why-item">
+          <div class="why-number">04</div>
+          <div>
+            <h3>Complete Service</h3>
+            <p>Photography, video, editing, albums, printing and frames.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section-dark">
+  <div class="container">
+
+    <div class="section-title reveal">
+      <span>CLIENT VOICES</span>
+      <h2>Demo Testimonials</h2>
+      <p>Sample reviews shown only for website design testing.</p>
+    </div>
+
+    <div class="testimonial-grid">
+
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <p>“Beautiful presentation and lovely photography style. Demo testimonial.”</p>
+        <strong>Demo Client</strong>
+      </div>
+
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <p>“The gallery and album presentation looked premium. Demo testimonial.”</p>
+        <strong>Demo Client</strong>
+      </div>
+
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <p>“A clean and creative photography experience. Demo testimonial.”</p>
+        <strong>Demo Client</strong>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section">
+  <div class="container">
+
+    <div class="section-title reveal">
+      <span>ABOUT NAVI</span>
+      <h2>NAVI DIGITAL HIGH TECH STUDIO & VIDEOS</h2>
+      <p>
+        A modern photography and videography brand focused on preserving
+        real emotions, beautiful celebrations and unforgettable memories.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ENQUIRY -->
+<section class="section section-dark" id="enquiry">
+  <div class="container">
+
+    <div class="section-title reveal">
+      <span>LET'S CREATE</span>
+      <h2>Book Your Event</h2>
+      <p>Send your event details directly to NAVI WhatsApp.</p>
+    </div>
+
+    <div class="form-wrap reveal">
+
+      <form id="enquiryForm">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="clientName">Your Name *</label>
+            <input id="clientName" type="text" required maxlength="80"
+                   placeholder="Enter your name">
+          </div>
+
+          <div class="form-group">
+            <label for="clientPhone">WhatsApp Number *</label>
+            <input id="clientPhone" type="tel" required
+                   inputmode="numeric"
+                   pattern="[0-9]{10}"
+                   maxlength="10"
+                   placeholder="10 digit number">
+          </div>
+
+          <div class="form-group">
+            <label for="eventType">Event Type *</label>
+            <select id="eventType" required>
+              <option value="">Select event</option>
+              <option>Wedding</option>
+              <option>Reception</option>
+              <option>Engagement</option>
+              <option>Birthday</option>
+              <option>Baby Function</option>
+              <option>Corporate Event</option>
+              <option>Portrait Shoot</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="eventDate">Event Date *</label>
+            <input id="eventDate" type="date" required>
+          </div>
+
+          <div class="form-group full">
+            <label for="eventLocation">Event Location *</label>
+            <input id="eventLocation" type="text" required maxlength="150"
+                   placeholder="Village / Town / Location">
+          </div>
+
+          <div class="form-group full">
+            <label for="requirements">Your Requirement</label>
+            <textarea id="requirements"
+              maxlength="500"
+              placeholder="Photography / Videography / Album / Frames / Package etc."></textarea>
+          </div>
+
+        </div>
+
+        <div class="form-submit">
+          <button class="btn btn-primary" type="submit">
+            Send Enquiry on WhatsApp
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="container">
+
+    <div class="section-title reveal">
+      <span>GET IN TOUCH</span>
+      <h2>Contact NAVI</h2>
+      <p>Contact details can be updated here before the website launch.</p>
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="contact-card reveal">
+        <div class="contact-icon">📞</div>
+        <h3>Phone</h3>
+        <p>+91 XXXXXXXXXX</p>
+      </div>
+
+      <div class="contact-card reveal">
+        <div class="contact-icon">💬</div>
+        <h3>WhatsApp</h3>
+        <p>+91 XXXXXXXXXX</p>
+      </div>
+
+      <div class="contact-card reveal">
+        <div class="contact-icon">📍</div>
+        <h3>Studio</h3>
+        <p>Address will be updated before launch.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container reveal">
+
+    <h2>Your Story Deserves The Perfect Frame.</h2>
+
+    <p>
+      Let's capture your memories with NAVI DIGITAL HIGH TECH STUDIO & VIDEOS.
+    </p>
+
+    <a href="#enquiry" class="btn btn-primary">
+      Start Your Enquiry
+    </a>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="brand">
+          <div class="brand-logo">NV</div>
+          <div class="brand-text">
+            <span>NAVI</span> DIGITAL HIGH TECH STUDIO & VIDEOS
+          </div>
+        </div>
+
+        <p>
+          Photography • Videography • Albums • Frames • Creative Memories
+        </p>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#packages">Packages</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Wedding Photography</a></li>
+          <li><a href="#services">Event Videography</a></li>
+          <li><a href="#services">Portrait Photography</a></li>
+          <li><a href="#frames">Frames & Albums</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 NAVI DIGITAL HIGH TECH STUDIO & VIDEOS. All Rights Reserved.
+    </div>
+
+  </div>
 </footer>
 
-<a href="https://wa.me/919876544210" class="whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+<!-- FLOATING WHATSAPP -->
+<a
+  class="whatsapp-float"
+  id="whatsappFloat"
+  href="#"
+  aria-label="WhatsApp"
+  title="WhatsApp">
+  💬
+</a>
+
+<!-- BACK TO TOP -->
+<button class="top-btn" id="topBtn" aria-label="Back to top">
+  ↑
+</button>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+    ×
+  </button>
+
+  <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous image">
+    ‹
+  </button>
+
+  <div class="lightbox-content">
+
+    <div class="lightbox-loader" id="lightboxLoader"></div>
+
+    <img
+      class="lightbox-image"
+      id="lightboxImage"
+      alt="Gallery preview"
+      draggable="false">
+
+  </div>
+
+  <button class="lightbox-next" id="lightboxNext" aria-label="Next image">
+    ›
+  </button>
+
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
 
 <script>
-function toggleMenu(){
-    document.getElementById("navLinks").classList.toggle("show");
+"use strict";
+
+/* ================================
+   BASIC ELEMENTS
+================================ */
+
+const loader = document.getElementById("loader");
+const navLinks = document.getElementById("navLinks");
+const menuBtn = document.getElementById("menuBtn");
+const themeToggle = document.getElementById("themeToggle");
+const topBtn = document.getElementById("topBtn");
+const scrollProgress = document.getElementById("scrollProgress");
+const toast = document.getElementById("toast");
+
+/* ================================
+   LOADER
+================================ */
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    loader.classList.add("hide");
+  }, 650);
+});
+
+/* ================================
+   MOBILE MENU
+================================ */
+
+menuBtn.addEventListener("click", () => {
+  navLinks.classList.toggle("open");
+
+  menuBtn.textContent =
+    navLinks.classList.contains("open") ? "×" : "☰";
+});
+
+document.querySelectorAll(".nav-link").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuBtn.textContent = "☰";
+  });
+});
+
+/* ================================
+   THEME
+================================ */
+
+const savedTheme = localStorage.getItem("naviTheme");
+
+if(savedTheme === "light"){
+  document.body.classList.add("light");
 }
-function bookAppointment(event){
+
+themeToggle.addEventListener("click", () => {
+
+  document.body.classList.toggle("light");
+
+  localStorage.setItem(
+    "naviTheme",
+    document.body.classList.contains("light") ? "light" : "dark"
+  );
+
+});
+
+/* ================================
+   SCROLL PROGRESS + TOP BUTTON
+================================ */
+
+window.addEventListener("scroll", () => {
+
+  const scrollTop = window.scrollY;
+
+  const documentHeight =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+
+  const progress =
+    documentHeight > 0
+      ? (scrollTop / documentHeight) * 100
+      : 0;
+
+  scrollProgress.style.width = progress + "%";
+
+  if(scrollTop > 500){
+    topBtn.classList.add("show");
+  }else{
+    topBtn.classList.remove("show");
+  }
+
+});
+
+topBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+});
+
+/* ================================
+   ACTIVE NAVIGATION
+================================ */
+
+const sections = document.querySelectorAll(
+  "section[id]"
+);
+
+const navItems = document.querySelectorAll(
+  ".nav-link"
+);
+
+const sectionObserver =
+new IntersectionObserver((entries) => {
+
+  entries.forEach(entry => {
+
+    if(entry.isIntersecting){
+
+      navItems.forEach(link => {
+        link.classList.remove("active");
+
+        if(
+          link.getAttribute("href") ===
+          "#" + entry.target.id
+        ){
+          link.classList.add("active");
+        }
+      });
+
+    }
+
+  });
+
+},{
+  rootMargin:"-35% 0px -55% 0px"
+});
+
+sections.forEach(section => {
+  sectionObserver.observe(section);
+});
+
+/* ================================
+   REVEAL ANIMATION
+================================ */
+
+const revealObserver =
+new IntersectionObserver((entries,observer) => {
+
+  entries.forEach(entry => {
+
+    if(entry.isIntersecting){
+
+      entry.target.classList.add("visible");
+
+      observer.unobserve(entry.target);
+    }
+
+  });
+
+},{
+  threshold:.08
+});
+
+document.querySelectorAll(".reveal").forEach(el => {
+  revealObserver.observe(el);
+});
+
+/* ================================
+   TOAST
+================================ */
+
+let toastTimer;
+
+function showToast(message){
+
+  toast.textContent = message;
+
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer =
+    setTimeout(() => {
+      toast.classList.remove("show");
+    },3200);
+}
+
+/* ================================
+   GALLERY FILTER
+================================ */
+
+const filterButtons =
+document.querySelectorAll(".filter-btn");
+
+const galleryItems =
+document.querySelectorAll(".gallery-item");
+
+filterButtons.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    filterButtons.forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+    button.classList.add("active");
+
+    const filter =
+      button.dataset.filter;
+
+    galleryItems.forEach(item => {
+
+      const category =
+        item.dataset.category;
+
+      if(
+        filter === "all" ||
+        category === filter
+      ){
+
+        item.classList.remove("hidden");
+
+        requestAnimationFrame(() => {
+          item.classList.add("visible");
+        });
+
+      }else{
+
+        item.classList.add("hidden");
+
+      }
+
+    });
+
+  });
+
+});
+
+/* ================================
+   LIGHTBOX
+================================ */
+
+const lightbox =
+document.getElementById("lightbox");
+
+const lightboxImage =
+document.getElementById("lightboxImage");
+
+const lightboxLoader =
+document.getElementById("lightboxLoader");
+
+const lightboxClose =
+document.getElementById("lightboxClose");
+
+const lightboxPrev =
+document.getElementById("lightboxPrev");
+
+const lightboxNext =
+document.getElementById("lightboxNext");
+
+let currentGalleryIndex = 0;
+let lightboxOpening = false;
+
+/*
+  Get only images currently available in gallery.
+*/
+function getVisibleGalleryItems(){
+
+  return Array.from(galleryItems)
+    .filter(item =>
+      !item.classList.contains("hidden")
+    );
+
+}
+
+/*
+  Open image without making the page appear frozen.
+*/
+function openLightbox(item){
+
+  if(!item || lightboxOpening) return;
+
+  const visibleItems =
+    getVisibleGalleryItems();
+
+  const position =
+    visibleItems.indexOf(item);
+
+  if(position < 0) return;
+
+  currentGalleryIndex = position;
+
+  const image =
+    item.querySelector("img");
+
+  if(!image) return;
+
+  lightboxOpening = true;
+
+  lightbox.classList.add("show");
+
+  lightbox.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body.style.overflow = "hidden";
+
+  lightboxImage.classList.remove("loaded");
+
+  lightboxLoader.style.display = "block";
+
+  /*
+    Important:
+    We use the thumbnail/current source first,
+    then load it asynchronously.
+    This prevents the "screen hang" feeling.
+  */
+
+  const source =
+    image.currentSrc || image.src;
+
+  const preloaded =
+    new Image();
+
+  preloaded.decoding = "async";
+
+  preloaded.onload = () => {
+
+    lightboxImage.src = source;
+
+    lightboxImage.alt =
+      image.alt || "Gallery preview";
+
+    lightboxImage.classList.add("loaded");
+
+    lightboxLoader.style.display = "none";
+
+    lightboxOpening = false;
+
+  };
+
+  preloaded.onerror = () => {
+
+    lightboxLoader.style.display = "none";
+
+    lightboxOpening = false;
+
+    showToast(
+      "Image could not be loaded. Please try again."
+    );
+
+    closeLightbox();
+
+  };
+
+  preloaded.src = source;
+
+}
+
+/*
+  Close lightbox safely.
+*/
+function closeLightbox(){
+
+  lightbox.classList.remove("show");
+
+  lightbox.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.style.overflow = "";
+
+  lightboxImage.classList.remove("loaded");
+
+  lightboxLoader.style.display = "none";
+
+  /*
+    Clear source after transition starts.
+    This also prevents unwanted retained images.
+  */
+
+  setTimeout(() => {
+
+    if(
+      !lightbox.classList.contains("show")
+    ){
+      lightboxImage.src = "";
+    }
+
+  },250);
+
+  lightboxOpening = false;
+}
+
+function showGalleryImage(position){
+
+  const visibleItems =
+    getVisibleGalleryItems();
+
+  if(!visibleItems.length) return;
+
+  if(position < 0){
+    position =
+      visibleItems.length - 1;
+  }
+
+  if(position >= visibleItems.length){
+    position = 0;
+  }
+
+  currentGalleryIndex = position;
+
+  const item =
+    visibleItems[currentGalleryIndex];
+
+  const image =
+    item.querySelector("img");
+
+  if(!image) return;
+
+  lightboxOpening = true;
+
+  lightboxImage.classList.remove("loaded");
+
+  lightboxLoader.style.display = "block";
+
+  const source =
+    image.currentSrc || image.src;
+
+  const preloaded =
+    new Image();
+
+  preloaded.decoding = "async";
+
+  preloaded.onload = () => {
+
+    lightboxImage.src = source;
+
+    lightboxImage.alt =
+      image.alt || "Gallery preview";
+
+    lightboxImage.classList.add("loaded");
+
+    lightboxLoader.style.display = "none";
+
+    lightboxOpening = false;
+
+  };
+
+  preloaded.onerror = () => {
+
+    lightboxLoader.style.display = "none";
+
+    lightboxOpening = false;
+
+    showToast(
+      "Unable to load this image."
+    );
+
+  };
+
+  preloaded.src = source;
+}
+
+/* Gallery click */
+
+galleryItems.forEach(item => {
+
+  item.addEventListener("click", event => {
+
     event.preventDefault();
-    alert("Thank you! Your appointment request has been received.");
+
+    openLightbox(item);
+
+  });
+
+});
+
+/* Close button */
+
+lightboxClose.addEventListener(
+  "click",
+  closeLightbox
+);
+
+/* Background click */
+
+lightbox.addEventListener("click", event => {
+
+  if(event.target === lightbox){
+    closeLightbox();
+  }
+
+});
+
+/* Previous */
+
+lightboxPrev.addEventListener("click", event => {
+
+  event.stopPropagation();
+
+  if(lightboxOpening) return;
+
+  showGalleryImage(
+    currentGalleryIndex - 1
+  );
+
+});
+
+/* Next */
+
+lightboxNext.addEventListener("click", event => {
+
+  event.stopPropagation();
+
+  if(lightboxOpening) return;
+
+  showGalleryImage(
+    currentGalleryIndex + 1
+  );
+
+});
+
+/* Keyboard */
+
+document.addEventListener("keydown", event => {
+
+  if(!lightbox.classList.contains("show")){
+    return;
+  }
+
+  if(event.key === "Escape"){
+    closeLightbox();
+  }
+
+  if(event.key === "ArrowLeft"){
+    showGalleryImage(
+      currentGalleryIndex - 1
+    );
+  }
+
+  if(event.key === "ArrowRight"){
+    showGalleryImage(
+      currentGalleryIndex + 1
+    );
+  }
+
+});
+
+/* ================================
+   PRELOAD NEXT IMAGE
+================================ */
+
+galleryItems.forEach(item => {
+
+  item.addEventListener("mouseenter", () => {
+
+    const visibleItems =
+      getVisibleGalleryItems();
+
+    const index =
+      visibleItems.indexOf(item);
+
+    if(index < 0) return;
+
+    const next =
+      visibleItems[index + 1];
+
+    if(!next) return;
+
+    const img =
+      next.querySelector("img");
+
+    if(img && !img.complete){
+
+      const preload =
+        new Image();
+
+      preload.src =
+        img.currentSrc || img.src;
+    }
+
+  });
+
+});
+
+/* ================================
+   BEFORE / AFTER SLIDER
+================================ */
+
+const beforeAfter =
+document.getElementById("beforeAfter");
+
+const beforeImage =
+document.getElementById("beforeImage");
+
+const sliderLine =
+document.getElementById("sliderLine");
+
+const sliderHandle =
+document.getElementById("sliderHandle");
+
+let sliderActive = false;
+
+function updateBeforeAfter(clientX){
+
+  const rect =
+    beforeAfter.getBoundingClientRect();
+
+  let percentage =
+    ((clientX - rect.left) / rect.width) * 100;
+
+  percentage =
+    Math.max(0,Math.min(100,percentage));
+
+  beforeImage.style.clipPath =
+    `inset(0 0 0 ${percentage}%)`;
+
+  sliderLine.style.left =
+    percentage + "%";
+
+  sliderHandle.style.left =
+    percentage + "%";
 }
+
+beforeAfter.addEventListener(
+  "pointerdown",
+  event => {
+
+    sliderActive = true;
+
+    beforeAfter.setPointerCapture(
+      event.pointerId
+    );
+
+    updateBeforeAfter(event.clientX);
+
+  }
+);
+
+beforeAfter.addEventListener(
+  "pointermove",
+  event => {
+
+    if(!sliderActive) return;
+
+    updateBeforeAfter(event.clientX);
+
+  }
+);
+
+beforeAfter.addEventListener(
+  "pointerup",
+  () => {
+    sliderActive = false;
+  }
+);
+
+beforeAfter.addEventListener(
+  "pointercancel",
+  () => {
+    sliderActive = false;
+  }
+);
+
+/* ================================
+   VIDEO DEMO
+================================ */
+
+document
+  .getElementById("videoDemoBtn")
+  .addEventListener("click", () => {
+
+    showToast(
+      "Video section ready — add your own NAVI video before launch."
+    );
+
+  });
+
+/* ================================
+   ENQUIRY FORM
+================================ */
+
+const enquiryForm =
+document.getElementById("enquiryForm");
+
+const eventDate =
+document.getElementById("eventDate");
+
+/*
+  Prevent past dates.
+*/
+
+const today =
+new Date().toISOString().split("T")[0];
+
+eventDate.min = today;
+
+enquiryForm.addEventListener(
+  "submit",
+  event => {
+
+    event.preventDefault();
+
+    const name =
+      document.getElementById("clientName")
+      .value.trim();
+
+    const phone =
+      document.getElementById("clientPhone")
+      .value.replace(/\D/g,"");
+
+    const type =
+      document.getElementById("eventType")
+      .value;
+
+    const date =
+      eventDate.value;
+
+    const location =
+      document.getElementById("eventLocation")
+      .value.trim();
+
+    const requirements =
+      document.getElementById("requirements")
+      .value.trim();
+
+    if(!name){
+      showToast("Please enter your name.");
+      return;
+    }
+
+    if(!/^[0-9]{10}$/.test(phone)){
+      showToast(
+        "Please enter a valid 10-digit WhatsApp number."
+      );
+      return;
+    }
+
+    if(!type){
+      showToast("Please select your event type.");
+      return;
+    }
+
+    if(!date){
+      showToast("Please select your event date.");
+      return;
+    }
+
+    if(date < today){
+      showToast(
+        "Event date cannot be in the past."
+      );
+      return;
+    }
+
+    if(!location){
+      showToast(
+        "Please enter your event location."
+      );
+      return;
+    }
+
+    /*
+      IMPORTANT:
+      Replace this placeholder with your real
+      NAVI WhatsApp business number before launch.
+      Country code 91 + 10 digit number.
+    */
+
+    const studioWhatsApp =
+      "91XXXXXXXXXX";
+
+    if(
+      studioWhatsApp.includes("X")
+    ){
+
+      showToast(
+        "Studio WhatsApp number will be added before launch."
+      );
+
+      return;
+    }
+
+    const message =
+`Hello NAVI DIGITAL HIGH TECH STUDIO & VIDEOS,
+
+I would like to enquire about your photography/videography services.
+
+Name: ${name}
+WhatsApp: ${phone}
+Event: ${type}
+Event Date: ${date}
+Location: ${location}
+Requirement: ${requirements || "Not specified"}
+
+Thank you.`;
+
+    const url =
+      "https://wa.me/" +
+      studioWhatsApp +
+      "?text=" +
+      encodeURIComponent(message);
+
+    window.open(
+      url,
+      "_blank",
+      "noopener,noreferrer"
+    );
+
+  }
+);
+
+/* ================================
+   FLOATING WHATSAPP
+================================ */
+
+const whatsappFloat =
+document.getElementById("whatsappFloat");
+
+whatsappFloat.addEventListener(
+  "click",
+  event => {
+
+    event.preventDefault();
+
+    const studioWhatsApp =
+      "91XXXXXXXXXX";
+
+    if(
+      studioWhatsApp.includes("X")
+    ){
+
+      showToast(
+        "Studio WhatsApp number will be added before launch."
+      );
+
+      return;
+    }
+
+    window.open(
+      "https://wa.me/" +
+      studioWhatsApp,
+      "_blank",
+      "noopener,noreferrer"
+    );
+
+  }
+);
+
+/* ================================
+   IMAGE ERROR PROTECTION
+================================ */
+
+document.querySelectorAll("img").forEach(img => {
+
+  img.addEventListener("error", () => {
+
+    img.style.opacity = ".35";
+
+    /*
+      Don't let one failed image break
+      the rest of the website.
+    */
+
+  });
+
+});
+
+/* ================================
+   CONSOLE
+================================ */
+
+console.log(
+  "NAVI DIGITAL HIGH TECH STUDIO & VIDEOS website loaded successfully."
+);
+
+console.log(
+  "Demo images should be replaced with your own studio images before launch."
+);
 </script>
+
+<noscript>
+  <div style="
+    position:fixed;
+    inset:0;
+    z-index:999999;
+    background:#050505;
+    color:#fff;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    padding:30px;">
+    Please enable JavaScript to experience the full NAVI website.
+  </div>
+</noscript>
 
 </body>
 </html>
